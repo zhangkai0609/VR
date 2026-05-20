@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1220">
+  <meta name="description" content="建筑空间VR导览 - 在建筑空间中滑动查看环境，通过发光热点交互打开空调遥控二级页面。">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>建筑 VR 导览 | 空调遥控热点体验</title>
+  <link rel="stylesheet" href="assets/vr-tour.css">
+</head>
+<body>
+  <main class="tour" id="tour">
+    <section class="viewer" id="viewer" aria-label="VR建筑导览画面">
+      <div class="scene-stage" id="sceneStage">
+        <img id="sceneImage" class="scene-image" alt="建筑VR场景">
+        <button class="white-hotspot" id="acHotspot" type="button" aria-label="打开空调遥控二级页面">
+          <span></span>
+          <strong>空调控制</strong>
+        </button>
+      </div>
+
+      <header class="hud top-hud">
+        <a class="brand" href="./" aria-label="VR导览首页">
+          <span class="brand-logo">VR</span>
+          <span>
+            <b>建筑空间 VR 导览</b>
+            <small id="sceneSubtitle">滑动观看 · 点击白点打开空调遥控</small>
+          </span>
+        </a>
+        <nav class="top-tools" aria-label="顶部工具">
+          <button type="button" data-action="reset">重置视角</button>
+          <button type="button" data-action="hotspot">定位白点</button>
+          <button class="accent" type="button" data-action="fullscreen">全屏</button>
+        </nav>
+      </header>
+
+      <aside class="hud intro-panel">
+        <p class="kicker">720YUN STYLE TOUR</p>
+        <h1 id="sceneTitle">庭院入口与设备控制点</h1>
+        <p id="sceneDescription">在建筑空间中滑动查看环境，找到发光小白点后点击，即可弹出空调遥控二级页面。</p>
+        <div class="chip-row">
+          <span>手机滑动</span>
+          <span>热点交互</span>
+          <span>二级遥控界面</span>
+        </div>
+      </aside>
+
+      <aside class="side-dock" aria-label="侧边工具栏">
+        <button type="button" data-action="prev" aria-label="上一场景">‹</button>
+        <button type="button" data-action="hotspot" aria-label="定位热点">●</button>
+        <button type="button" data-action="guide" aria-label="操作说明">?</button>
+        <button type="button" data-action="next" aria-label="下一场景">›</button>
+      </aside>
+
+      <aside class="mini-map" aria-label="右上角平面导览">
+        <div class="mini-map-card">
+          <button class="map-dot map-dot-a" type="button" data-action="prev" aria-label="上一场景"></button>
+          <button class="map-dot map-dot-b" type="button" data-action="hotspot" aria-label="定位热点"></button>
+          <button class="map-dot map-dot-c" type="button" data-action="guide" aria-label="查看简介"></button>
+          <button class="map-dot map-dot-d" type="button" data-action="next" aria-label="下一场景"></button>
+          <div class="floor-plan" aria-hidden="true">
+            <span class="room room-1"></span>
+            <span class="room room-2"></span>
+            <span class="room room-3"></span>
+            <span class="room room-4"></span>
+            <span class="room room-5"></span>
+            <span class="corridor"></span>
+            <span class="marker">空调</span>
+          </div>
+          <button class="map-hotspot" type="button" id="mapHotspot" aria-label="打开空调遥控"></button>
+        </div>
+        <nav class="map-tools" aria-label="右上角工具">
+          <button type="button" data-action="fullscreen" aria-label="全屏">↗</button>
+          <button type="button" data-action="guide" aria-label="简介">▣</button>
+          <button type="button" data-action="reset" aria-label="重置视角">◉</button>
+        </nav>
+        <div class="map-zoom" aria-label="地图缩放">
+          <button type="button" data-action="hotspot" aria-label="放大定位">⊕</button>
+          <button type="button" data-action="reset" aria-label="缩小复位">⊖</button>
+        </div>
+      </aside>
+
+      <section class="scene-selector" aria-label="场景切换">
+        <div class="thumb-strip">
+          <button class="strip-arrow prev" type="button" data-action="prev" aria-label="上一场景">‹</button>
+          <div class="scene-cards" id="sceneCards"></div>
+          <button class="strip-arrow next" type="button" data-action="next" aria-label="下一场景">›</button>
+        </div>
+        <nav class="floor-tabs" aria-label="楼层切换">
+          <button class="active" type="button">庭院</button>
+          <button type="button">一楼</button>
+          <button type="button">二楼</button>
+          <button type="button">三楼</button>
+          <button type="button">地下室</button>
+        </nav>
+        <div class="bottom-nav">
+          <button class="bottom-item active" type="button" data-action="hotspot">
+            <span class="grid-icon" aria-hidden="true"></span>
+            <b>场景选择</b>
+          </button>
+          <div class="bottom-actions">
+            <button class="bottom-item" type="button" data-action="guide">
+              <span class="info-icon" aria-hidden="true">!</span>
+              <b>简介</b>
+            </button>
+            <button class="bottom-item" type="button" data-action="next">
+              <span class="count-icon" aria-hidden="true">3</span>
+              <b>场景</b>
+            </button>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="remote-page" id="remotePage" aria-hidden="true" role="dialog" aria-label="空调遥控二级页面">
+      <div class="remote-backdrop" data-action="close-remote"></div>
+      <div class="remote-desktop">
+        <button class="close-remote" type="button" data-action="close-remote" aria-label="关闭空调遥控">×</button>
+
+        <div class="remote-copy">
+          <p class="kicker">SECONDARY CONTROL DESKTOP</p>
+          <h2>空调遥控界面</h2>
+          <p id="remoteSceneText">当前热点位于建筑外立面设备控制点。这里模拟一个漂亮的二级遥控桌面，可用于展示设备状态、控制说明或互动演示。</p>
+          <div class="status-grid">
+            <span><b>模式</b><em id="modeStatus">制冷</em></span>
+            <span><b>风速</b><em id="fanStatus">自动</em></span>
+            <span><b>扫风</b><em id="swingStatus">开启</em></span>
+          </div>
+        </div>
+
+        <div class="remote-device" aria-label="空调遥控器">
+          <div class="remote-screen">
+            <div>
+              <small>室内温度</small>
+              <strong><span id="temperature">24</span>°C</strong>
+            </div>
+            <span class="signal">ON</span>
+          </div>
+
+          <button class="power-btn active" type="button" id="powerBtn" aria-label="空调电源">
+            <span></span>
+          </button>
+
+          <div class="temp-control">
+            <button type="button" data-temp="-1" aria-label="降低温度">−</button>
+            <div>
+              <b>温度调节</b>
+              <small>18°C - 30°C</small>
+            </div>
+            <button type="button" data-temp="1" aria-label="升高温度">+</button>
+          </div>
+
+          <div class="remote-grid">
+            <button class="selected" type="button" data-mode="制冷">制冷</button>
+            <button type="button" data-mode="制热">制热</button>
+            <button type="button" data-mode="除湿">除湿</button>
+            <button type="button" data-mode="送风">送风</button>
+          </div>
+
+          <div class="remote-actions">
+            <button type="button" data-fan>风速</button>
+            <button type="button" data-swing>扫风</button>
+            <button type="button" data-action="close-remote">返回 VR</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="guide-toast" id="guideToast" aria-hidden="true">
+      <button type="button" data-action="close-guide" aria-label="关闭说明">×</button>
+      <h2>手机观看方式</h2>
+      <p>用手指左右/上下滑动查看建筑环境，双击或点“重置视角”回到初始位置。看到发光小白点后点击，即可打开空调遥控二级页面。</p>
+    </section>
+  </main>
+
+  <script src="assets/vr-tour.js"></script>
+</body>
+</html>
