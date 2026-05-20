@@ -139,17 +139,13 @@ function loadScene(index) {
   sceneIndex = (index + scenes.length) % scenes.length;
   const current = scenes[sceneIndex];
 
-  image.style.opacity = "0.4";
+  image.style.opacity = "1";
   image.src = current.thumb;
 
   const full = new Image();
   full.src = current.image;
   full.onload = () => {
     image.src = full.src;
-    image.style.opacity = "1";
-  };
-  full.onerror = () => {
-    image.style.opacity = "1";
   };
 
   image.alt = current.title;
