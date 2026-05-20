@@ -80,7 +80,6 @@ const hotspot = document.getElementById("acHotspot");
 const mapHotspot = document.getElementById("mapHotspot");
 const sceneTitle = document.getElementById("sceneTitle");
 const sceneSubtitle = document.getElementById("sceneSubtitle");
-const sceneDescription = document.getElementById("sceneDescription");
 const sceneCards = document.getElementById("sceneCards");
 const remotePage = document.getElementById("remotePage");
 const remoteSceneText = document.getElementById("remoteSceneText");
@@ -146,7 +145,6 @@ function loadScene(index) {
   image.onload = () => { image.style.opacity = "1"; };
   image.onerror = () => { image.style.opacity = "1"; };
   sceneTitle.textContent = current.title;
-  sceneDescription.textContent = current.description;
   hotspot.style.setProperty("--hotspot-x", `${current.hotspot.x}%`);
   hotspot.style.setProperty("--hotspot-y", `${current.hotspot.y}%`);
   remoteSceneText.textContent = current.remoteText;

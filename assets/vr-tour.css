@@ -185,14 +185,6 @@ a {
   box-shadow: 0 14px 32px rgba(47, 125, 246, 0.26);
 }
 
-.intro-panel {
-  left: max(20px, env(safe-area-inset-left));
-  top: 104px;
-  width: min(430px, calc(100vw - 40px));
-  padding: 18px 20px;
-  border-radius: 18px;
-}
-
 .kicker {
   margin: 0 0 10px;
   color: #a9dcff;
@@ -201,27 +193,6 @@ a {
   letter-spacing: 0.12em;
 }
 
-.intro-panel h1 {
-  margin: 0;
-  font-size: clamp(24px, 3.4vw, 38px);
-  line-height: 1.15;
-  letter-spacing: 0;
-}
-
-.intro-panel p:not(.kicker) {
-  margin: 14px 0 0;
-  color: var(--muted);
-  line-height: 1.8;
-}
-
-.chip-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 18px;
-}
-
-.chip-row span,
 .status-grid span {
   display: inline-flex;
   align-items: center;
@@ -255,24 +226,6 @@ a {
   font-weight: 900;
   background: rgba(9, 17, 31, 0.54);
   backdrop-filter: blur(16px);
-}
-
-.scene-strip {
-  position: absolute;
-  z-index: 12;
-  left: 50%;
-  bottom: max(20px, env(safe-area-inset-bottom));
-  display: grid;
-  grid-template-columns: 48px minmax(0, 1fr) 48px;
-  gap: 12px;
-  width: min(860px, calc(100vw - 36px));
-  padding: 12px;
-  border: 1px solid var(--line);
-  border-radius: 24px;
-  background: rgba(9, 17, 31, 0.54);
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(22px);
-  transform: translateX(-50%);
 }
 
 .mini-map {
@@ -1045,11 +998,29 @@ a {
   .top-hud {
     align-items: flex-start;
     flex-direction: column;
-    gap: 10px;
-    border-radius: 0 0 22px 22px;
+    gap: 6px;
+    border-radius: 0 0 18px 18px;
     left: 0;
     right: 0;
     top: 0;
+    width: 100%;
+    min-height: auto;
+    padding: 10px 12px;
+  }
+
+  .brand-logo {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    font-size: 14px;
+  }
+
+  .brand b {
+    font-size: 15px;
+  }
+
+  .brand small {
+    font-size: 11px;
   }
 
   .top-tools {
@@ -1059,51 +1030,97 @@ a {
   }
 
   .top-tools button {
-    min-height: 38px;
-    padding: 0 12px;
-    font-size: 13px;
-  }
-
-  .intro-panel {
-    top: 128px;
-    left: 12px;
-    right: 12px;
-    width: auto;
-    padding: 18px;
-  }
-
-  .intro-panel h1 {
-    font-size: 34px;
-  }
-
-  .intro-panel p:not(.kicker),
-  .chip-row {
-    display: none;
+    min-height: 34px;
+    padding: 0 10px;
+    font-size: 12px;
   }
 
   .side-dock {
-    right: 12px;
+    right: 8px;
+    gap: 6px;
   }
 
   .side-dock button {
-    width: 40px;
-    height: 40px;
-    border-radius: 14px;
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    font-size: 20px;
   }
 
-  .scene-strip {
-    grid-template-columns: 42px minmax(0, 1fr) 42px;
-    width: calc(100vw - 20px);
-    bottom: 12px;
-    padding: 10px;
+  .mini-map {
+    display: none;
   }
 
-  .scene-cards {
-    grid-template-columns: repeat(3, 132px);
+  .scene-selector {
+    min-height: 240px;
+  }
+
+  .thumb-strip {
+    height: 100px;
+    padding: 8px max(56px, env(safe-area-inset-left)) 8px max(56px, env(safe-area-inset-right));
+  }
+
+  .scene-selector .scene-cards {
+    gap: 8px;
+    max-width: calc(100vw - 110px);
+  }
+
+  .scene-selector .scene-card {
+    flex: 0 0 80px;
+    width: 80px;
+    height: 80px;
+  }
+
+  .scene-selector .scene-card b {
+    font-size: 11px;
+    min-height: 26px;
+  }
+
+  .scene-selector .strip-arrow {
+    width: 32px;
+    height: 48px;
+    border-radius: 6px;
+  }
+
+  .scene-selector .strip-arrow.prev { left: 10px; }
+  .scene-selector .strip-arrow.next { right: 10px; }
+
+  .floor-tabs {
+    top: 100px;
+    height: 36px;
+    gap: 20px;
+  }
+
+  .floor-tabs button {
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .bottom-nav {
+    padding: 0 16px;
+  }
+
+  .bottom-item span {
+    width: 44px;
+    height: 44px;
+  }
+
+  .bottom-item b {
+    font-size: 12px;
+    padding-bottom: 4px;
+  }
+
+  .bottom-actions {
+    gap: 24px;
   }
 
   .white-hotspot strong {
     display: none;
+  }
+
+  .white-hotspot span {
+    width: 22px;
+    height: 22px;
   }
 
   .remote-desktop {
@@ -1136,8 +1153,7 @@ a {
 }
 
 @media (max-height: 520px) and (orientation: landscape) {
-  .top-hud,
-  .intro-panel {
+  .top-hud {
     display: none;
   }
 
