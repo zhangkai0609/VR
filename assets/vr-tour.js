@@ -79,7 +79,6 @@ const image = document.getElementById("sceneImage");
 const hotspot = document.getElementById("acHotspot");
 const mapHotspot = document.getElementById("mapHotspot");
 const sceneTitle = document.getElementById("sceneTitle");
-const sceneSubtitle = document.getElementById("sceneSubtitle");
 const sceneCards = document.getElementById("sceneCards");
 const remotePage = document.getElementById("remotePage");
 const remoteSceneText = document.getElementById("remoteSceneText");
