@@ -110,10 +110,10 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
-  width: min(430px, calc(100vw - 36px));
-  min-height: 68px;
-  padding: 12px 14px;
+  gap: 12px;
+  width: min(380px, calc(100vw - 36px));
+  min-height: 50px;
+  padding: 8px 12px;
   border-radius: 18px;
 }
 
@@ -125,15 +125,16 @@ a {
 }
 
 .brand-logo {
-  width: 42px;
-  height: 42px;
+  width: 34px;
+  height: 34px;
   display: grid;
   place-items: center;
-  border-radius: 14px;
+  border-radius: 10px;
   background: rgba(255, 255, 255, 0.92);
   color: var(--blue);
   font-weight: 900;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+  font-size: 14px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
 }
 
 .brand b,
@@ -142,14 +143,14 @@ a {
 }
 
 .brand b {
-  font-size: 17px;
+  font-size: 14px;
   font-weight: 900;
 }
 
 .brand small {
-  margin-top: 2px;
+  margin-top: 1px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .top-tools {
@@ -173,10 +174,11 @@ a {
 }
 
 .top-tools button {
-  min-height: 42px;
-  padding: 0 15px;
+  min-height: 34px;
+  padding: 0 12px;
   border-radius: 999px;
   font-weight: 800;
+  font-size: 13px;
 }
 
 .top-tools button.accent {
@@ -391,7 +393,7 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  min-height: 300px;
+  min-height: 210px;
   pointer-events: none;
 }
 
@@ -400,12 +402,12 @@ a {
   left: 0;
   right: 0;
   top: 0;
-  height: 132px;
+  height: 96px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  padding: 13px max(76px, env(safe-area-inset-left)) 13px max(76px, env(safe-area-inset-right));
+  padding: 8px max(76px, env(safe-area-inset-left)) 8px max(76px, env(safe-area-inset-right));
   background: rgba(0, 0, 0, 0.38);
   pointer-events: auto;
 }
@@ -424,9 +426,9 @@ a {
 }
 
 .scene-selector .scene-card {
-  flex: 0 0 106px;
-  width: 106px;
-  height: 106px;
+  flex: 0 0 90px;
+  width: 90px;
+  height: 90px;
   border: 2px solid rgba(255, 255, 255, 0.9);
   border-radius: 7px;
   background: rgba(255, 255, 255, 0.12);
@@ -484,12 +486,12 @@ a {
   position: absolute;
   left: 0;
   right: 0;
-  top: 132px;
-  height: 42px;
+  top: 96px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 28px;
+  gap: 24px;
   background: rgba(0, 0, 0, 0.34);
   pointer-events: auto;
 }
@@ -531,13 +533,13 @@ a {
 .bottom-actions {
   display: flex;
   align-items: flex-end;
-  gap: 34px;
+  gap: 20px;
 }
 
 .bottom-item {
   display: grid;
   justify-items: center;
-  gap: 6px;
+  gap: 4px;
   border: 0;
   color: #fff;
   background: transparent;
@@ -548,21 +550,21 @@ a {
 }
 
 .bottom-item span {
-  width: 54px;
-  height: 54px;
+  width: 38px;
+  height: 38px;
   display: grid;
   place-items: center;
   border-radius: 50%;
   color: #222;
   background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
   text-shadow: none;
 }
 
 .bottom-item b {
   position: relative;
-  padding-bottom: 7px;
-  font-size: 14px;
+  padding-bottom: 5px;
+  font-size: 12px;
 }
 
 .bottom-item.active b::after {
@@ -570,7 +572,7 @@ a {
   position: absolute;
   left: 50%;
   bottom: 0;
-  width: 58px;
+  width: 42px;
   height: 2px;
   border-radius: 4px;
   background: #ff741f;
@@ -998,29 +1000,29 @@ a {
   .top-hud {
     align-items: flex-start;
     flex-direction: column;
-    gap: 6px;
-    border-radius: 0 0 18px 18px;
+    gap: 4px;
+    border-radius: 0 0 14px 14px;
     left: 0;
     right: 0;
     top: 0;
     width: 100%;
     min-height: auto;
-    padding: 10px 12px;
+    padding: 8px 10px;
   }
 
   .brand-logo {
-    width: 32px;
-    height: 32px;
-    border-radius: 10px;
-    font-size: 14px;
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    font-size: 12px;
   }
 
   .brand b {
-    font-size: 15px;
+    font-size: 13px;
   }
 
   .brand small {
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .top-tools {
@@ -1030,9 +1032,9 @@ a {
   }
 
   .top-tools button {
-    min-height: 34px;
-    padding: 0 10px;
-    font-size: 12px;
+    min-height: 30px;
+    padding: 0 8px;
+    font-size: 11px;
   }
 
   .side-dock {
@@ -1041,10 +1043,10 @@ a {
   }
 
   .side-dock button {
-    width: 36px;
-    height: 36px;
-    border-radius: 12px;
-    font-size: 20px;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    font-size: 18px;
   }
 
   .mini-map {
@@ -1052,66 +1054,90 @@ a {
   }
 
   .scene-selector {
-    min-height: 240px;
+    min-height: 180px;
   }
 
   .thumb-strip {
-    height: 100px;
-    padding: 8px max(56px, env(safe-area-inset-left)) 8px max(56px, env(safe-area-inset-right));
+    height: 76px;
+    padding: 6px max(48px, env(safe-area-inset-left)) 6px max(48px, env(safe-area-inset-right));
   }
 
   .scene-selector .scene-cards {
-    gap: 8px;
-    max-width: calc(100vw - 110px);
+    gap: 6px;
+    max-width: calc(100vw - 96px);
   }
 
   .scene-selector .scene-card {
-    flex: 0 0 80px;
-    width: 80px;
-    height: 80px;
+    flex: 0 0 66px;
+    width: 66px;
+    height: 66px;
   }
 
   .scene-selector .scene-card b {
-    font-size: 11px;
-    min-height: 26px;
+    font-size: 10px;
+    min-height: 22px;
   }
 
   .scene-selector .strip-arrow {
-    width: 32px;
-    height: 48px;
-    border-radius: 6px;
+    width: 28px;
+    height: 40px;
+    border-radius: 5px;
   }
 
-  .scene-selector .strip-arrow.prev { left: 10px; }
-  .scene-selector .strip-arrow.next { right: 10px; }
+  .scene-selector .strip-arrow.prev { left: 8px; }
+  .scene-selector .strip-arrow.next { right: 8px; }
 
   .floor-tabs {
-    top: 100px;
-    height: 36px;
-    gap: 20px;
+    top: 76px;
+    height: 30px;
+    gap: 16px;
   }
 
   .floor-tabs button {
-    height: 36px;
-    font-size: 14px;
+    height: 30px;
+    font-size: 13px;
   }
 
   .bottom-nav {
-    padding: 0 16px;
+    padding: 0 12px;
   }
 
   .bottom-item span {
-    width: 44px;
-    height: 44px;
+    width: 32px;
+    height: 32px;
   }
 
   .bottom-item b {
-    font-size: 12px;
-    padding-bottom: 4px;
+    font-size: 11px;
+    padding-bottom: 3px;
+  }
+
+  .bottom-item.active b::after {
+    width: 32px;
   }
 
   .bottom-actions {
-    gap: 24px;
+    gap: 18px;
+  }
+
+  .grid-icon::before {
+    width: 18px;
+    height: 18px;
+    background:
+      linear-gradient(#222 0 0) left top / 7px 7px no-repeat,
+      linear-gradient(#222 0 0) right top / 7px 7px no-repeat,
+      linear-gradient(#222 0 0) left bottom / 7px 7px no-repeat,
+      linear-gradient(#222 0 0) right bottom / 7px 7px no-repeat;
+    -webkit-mask:
+      linear-gradient(#000 0 0) left top / 7px 7px no-repeat,
+      linear-gradient(#000 0 0) right top / 7px 7px no-repeat,
+      linear-gradient(#000 0 0) left bottom / 7px 7px no-repeat,
+      linear-gradient(#000 0 0) right bottom / 7px 7px no-repeat;
+    mask:
+      linear-gradient(#000 0 0) left top / 7px 7px no-repeat,
+      linear-gradient(#000 0 0) right top / 7px 7px no-repeat,
+      linear-gradient(#000 0 0) left bottom / 7px 7px no-repeat,
+      linear-gradient(#000 0 0) right bottom / 7px 7px no-repeat;
   }
 
   .white-hotspot strong {
