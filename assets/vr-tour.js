@@ -138,11 +138,21 @@ function focusHotspot() {
 function loadScene(index) {
   sceneIndex = (index + scenes.length) % scenes.length;
   const current = scenes[sceneIndex];
-  image.style.opacity = "0";
-  image.src = current.image;
+
+  image.style.opacity = "0.4";
+  image.src = current.thumb;
+
+  const full = new Image();
+  full.src = current.image;
+  full.onload = () => {
+    image.src = full.src;
+    image.style.opacity = "1";
+  };
+  full.onerror = () => {
+    image.style.opacity = "1";
+  };
+
   image.alt = current.title;
-  image.onload = () => { image.style.opacity = "1"; };
-  image.onerror = () => { image.style.opacity = "1"; };
   sceneTitle.textContent = current.title;
   hotspot.style.setProperty("--hotspot-x", `${current.hotspot.x}%`);
   hotspot.style.setProperty("--hotspot-y", `${current.hotspot.y}%`);
@@ -292,7 +302,7 @@ window.addEventListener("keydown", (event) => {
 
 loadScene(0);
 updateRemoteStatus();
-scenes.forEach(s => preloadImage(s.image));
+preloadAdjacent();
 if (window.location.hash === "#remote") {
   openRemote();
 }

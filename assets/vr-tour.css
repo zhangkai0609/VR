@@ -326,7 +326,7 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  min-height: 210px;
+  height: 230px;
   pointer-events: none;
 }
 
@@ -939,23 +939,23 @@ a {
   }
 
   .scene-selector {
-    min-height: 160px;
+    height: 190px;
   }
 
   .thumb-strip {
-    height: 72px;
+    height: 78px;
     padding: 5px max(48px, env(safe-area-inset-left)) 5px max(48px, env(safe-area-inset-right));
   }
 
   .scene-selector .scene-cards {
     gap: 6px;
-    max-width: calc(100vw - 96px);
+    max-width: calc(100vw - 100px);
   }
 
   .scene-selector .scene-card {
-    flex: 0 0 62px;
-    width: 62px;
-    height: 62px;
+    flex: 0 0 64px;
+    width: 64px;
+    height: 64px;
   }
 
   .scene-selector .scene-card b {
@@ -975,7 +975,7 @@ a {
   .scene-selector .strip-arrow.next { right: 8px; }
 
   .floor-tabs {
-    top: 72px;
+    top: 78px;
     height: 28px;
     gap: 14px;
   }
