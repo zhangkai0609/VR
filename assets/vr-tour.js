@@ -11,11 +11,10 @@ const scenes = [
   {
     title: "庭院出入口",
     subtitle: "外墙设备控制点",
-    description: "围墙、门体与周边绿化形成入口前的空间界面，点击白色发光点可打开空调遥控二级页面。",
+    description: "围墙、门体与周边绿化形成入口前的空间界面。",
     image: "assets/vr-images/_DSC2764-HDR-web.jpg",
     thumb: "assets/vr-images/_DSC2764-HDR-thumb.jpg",
-    hotspot: { x: 58, y: 58 },
-    remoteText: "当前热点位于庭院围墙附近，可作为建筑外部设备控制点。二级界面用于展示空调控制、温度、模式与设备状态。"
+    hotspot: null
   },
   {
     title: "庭院南",
@@ -23,53 +22,65 @@ const scenes = [
     description: "从庭院中央观察建筑玻璃门窗、步道和设备位置，适合展示空间导览与设施联动。",
     image: "assets/vr-images/_DSC2771-HDR-web.jpg",
     thumb: "assets/vr-images/_DSC2771-HDR-thumb.jpg",
-    hotspot: { x: 72, y: 47 },
-    remoteText: "热点靠近建筑玻璃立面，可模拟室内空调系统入口。点击后进入漂亮的遥控器界面，适合给用户演示交互功能。"
+    hotspot: null
   },
   {
     title: "庭院西南",
     subtitle: "立面细节控制点",
-    description: "转角视角突出墙面、门窗和屋檐结构，白点热点用于进入设备遥控二级页面。",
+    description: "转角视角突出墙面、门窗和屋檐结构。",
     image: "assets/vr-images/_DSC2774-HDR-web.jpg",
     thumb: "assets/vr-images/_DSC2774-HDR-thumb.jpg",
-    hotspot: { x: 65, y: 42 },
-    remoteText: "当前热点放置在建筑转角附近，用于表现立面细节中的设备控制入口。二级遥控界面可作为未来真实智能设备控制的视觉原型。"
+    hotspot: null
   },
   {
     title: "庭院西",
     subtitle: "设备维护视角",
-    description: "庭院西侧视角强调墙面、设备箱与步道关系，适合作为空调设备维护点的导览节点。",
+    description: "庭院西侧视角强调墙面、设备箱与步道关系。",
     image: "assets/vr-images/_DSC2764-HDR-web.jpg",
     thumb: "assets/vr-images/_DSC2764-HDR-thumb.jpg",
-    hotspot: { x: 50, y: 53 },
-    remoteText: "当前热点位于庭院西侧，可模拟靠近设备箱的空调控制入口，便于展示维护、开关与状态读取。"
+    hotspot: null
   },
   {
     title: "设备间",
     subtitle: "管线与设备集中区",
-    description: "设备间节点用于承接建筑机电信息，可通过空调遥控二级页面展示设备状态和运行模式。",
+    description: "设备间节点用于承接建筑机电信息。",
     image: "assets/vr-images/_DSC2774-HDR-web.jpg",
     thumb: "assets/vr-images/_DSC2774-HDR-thumb.jpg",
-    hotspot: { x: 56, y: 50 },
-    remoteText: "当前热点对应设备间区域，二级桌面可展示空调系统、风速、扫风和连接状态。"
+    hotspot: null
   },
   {
     title: "庭院西北",
     subtitle: "围合空间视角",
-    description: "庭院西北侧展示建筑围合边界和通行关系，适合放置联动控制、简介说明等导览信息。",
+    description: "庭院西北侧展示建筑围合边界和通行关系。",
     image: "assets/vr-images/_DSC2771-HDR-web.jpg",
     thumb: "assets/vr-images/_DSC2771-HDR-thumb.jpg",
-    hotspot: { x: 70, y: 44 },
-    remoteText: "当前热点位于庭院西北侧，适合模拟一个从导览进入设备控制的空间交互入口。"
+    hotspot: null
   },
   {
     title: "庭院北",
     subtitle: "建筑北侧通道",
-    description: "庭院北侧节点补齐完整场景选择体验，让底部导航更接近多点位 VR 导览的真实界面。",
+    description: "庭院北侧节点补齐完整场景选择体验。",
     image: "assets/vr-images/_DSC2764-HDR-web.jpg",
     thumb: "assets/vr-images/_DSC2764-HDR-thumb.jpg",
-    hotspot: { x: 60, y: 56 },
-    remoteText: "当前热点位于庭院北侧，可作为建筑导览中的空调控制演示入口。"
+    hotspot: null
+  },
+  {
+    title: "空调控制点①",
+    subtitle: "蓝色标记点位",
+    description: "根据照片中蓝色标记点定位的空调控制入口。",
+    image: "assets/vr-images/ac-guide-1-web.jpg",
+    thumb: "assets/vr-images/ac-guide-1-thumb.jpg",
+    hotspot: { x: 62.7, y: 58.3 },
+    remoteText: "当前热点对应照片中蓝色标记位置，点击打开空调遥控界面。"
+  },
+  {
+    title: "空调控制点②",
+    subtitle: "蓝色标记点位",
+    description: "根据照片中蓝色标记点定位的空调控制入口。",
+    image: "assets/vr-images/ac-guide-2-web.jpg",
+    thumb: "assets/vr-images/ac-guide-2-thumb.jpg",
+    hotspot: { x: 6.4, y: 37.5 },
+    remoteText: "当前热点对应照片中蓝色标记位置，点击打开空调遥控界面。"
   }
 ];
 
@@ -150,9 +161,16 @@ function loadScene(index) {
 
   image.alt = current.title;
   sceneTitle.textContent = current.title;
-  hotspot.style.setProperty("--hotspot-x", `${current.hotspot.x}%`);
-  hotspot.style.setProperty("--hotspot-y", `${current.hotspot.y}%`);
-  remoteSceneText.textContent = current.remoteText;
+  if (current.hotspot) {
+    hotspot.style.display = "";
+    hotspot.style.setProperty("--hotspot-x", `${current.hotspot.x}%`);
+    hotspot.style.setProperty("--hotspot-y", `${current.hotspot.y}%`);
+    mapHotspot.style.display = "";
+  } else {
+    hotspot.style.display = "none";
+    mapHotspot.style.display = "none";
+  }
+  remoteSceneText.textContent = current.remoteText || "";
   renderCards();
   resetView();
   preloadAdjacent();
