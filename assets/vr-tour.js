@@ -71,7 +71,7 @@ const scenes = [
     image: "assets/vr-images/ac-guide-1-web.jpg",
     thumb: "assets/vr-images/ac-guide-1-thumb.jpg",
     fit: "contain",
-    hotspot: { x: 62.7, y: 58.3, imgW: 1920, imgH: 2876 },
+    hotspot: { x: 65.0, y: 60.5, imgW: 1920, imgH: 2876 },
     remoteText: "当前热点对应照片中蓝色标记位置，点击打开空调遥控界面。"
   },
   {
@@ -81,7 +81,7 @@ const scenes = [
     image: "assets/vr-images/ac-guide-2-web.jpg",
     thumb: "assets/vr-images/ac-guide-2-thumb.jpg",
     fit: "contain",
-    hotspot: { x: 6.4, y: 37.5, imgW: 1920, imgH: 2876 },
+    hotspot: { x: 7.2, y: 37.5, imgW: 1920, imgH: 2876 },
     remoteText: "当前热点对应照片中蓝色标记位置，点击打开空调遥控界面。"
   }
 ];
