@@ -72,6 +72,7 @@ const scenes = [
     thumb: "assets/vr-images/ac-guide-1-thumb.jpg",
     fit: "contain",
     hotspot: { x: 94.8, y: 55.7, imgW: 1920, imgH: 2876 },
+    viewOffset: { x: -60 },
     remoteText: "当前热点对应照片中蓝色标记位置，点击打开空调遥控界面。"
   },
   {
@@ -240,6 +241,11 @@ function loadScene(index) {
   remoteSceneText.textContent = current.remoteText || "";
   renderCards();
   resetView();
+  if (current.viewOffset) {
+    if (current.viewOffset.x) panX = current.viewOffset.x;
+    if (current.viewOffset.y) panY = current.viewOffset.y;
+    applyTransform();
+  }
   preloadAdjacent();
 }
 
