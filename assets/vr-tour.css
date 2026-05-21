@@ -590,9 +590,9 @@ a {
   z-index: 9;
   left: var(--hotspot-x, 50%);
   top: var(--hotspot-y, 50%);
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
+  width: 44px;
+  height: 44px;
+  display: block;
   border: 0;
   color: #ffffff;
   background: transparent;
@@ -601,7 +601,10 @@ a {
 }
 
 .white-hotspot span {
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: 18px;
   height: 18px;
   border-radius: 50%;
@@ -624,6 +627,10 @@ a {
 }
 
 .white-hotspot strong {
+  position: absolute;
+  left: calc(50% + 14px);
+  top: 50%;
+  transform: translateY(-50%);
   max-width: 130px;
   padding: 8px 11px;
   border: 1px solid rgba(255, 255, 255, 0.32);
@@ -632,15 +639,14 @@ a {
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
   backdrop-filter: blur(16px);
   font-size: 13px;
+  white-space: nowrap;
   opacity: 0;
-  transform: translateX(-4px);
-  transition: 160ms ease;
+  transition: opacity 160ms ease;
 }
 
 .white-hotspot:hover strong,
 .white-hotspot:focus-visible strong {
   opacity: 1;
-  transform: translateX(0);
 }
 
 @keyframes glowPulse {
