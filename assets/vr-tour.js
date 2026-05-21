@@ -70,7 +70,7 @@ const scenes = [
     description: "根据照片中蓝色标记点定位的空调控制入口。",
     image: "assets/vr-images/ac-guide-1-web.jpg",
     thumb: "assets/vr-images/ac-guide-1-thumb.jpg",
-    hotspot: { x: 62.7, y: 58.3 },
+    hotspot: { x: 62.7, y: 58.3, imgW: 1920, imgH: 2876 },
     remoteText: "当前热点对应照片中蓝色标记位置，点击打开空调遥控界面。"
   },
   {
@@ -79,7 +79,7 @@ const scenes = [
     description: "根据照片中蓝色标记点定位的空调控制入口。",
     image: "assets/vr-images/ac-guide-2-web.jpg",
     thumb: "assets/vr-images/ac-guide-2-thumb.jpg",
-    hotspot: { x: 6.4, y: 37.5 },
+    hotspot: { x: 6.4, y: 37.5, imgW: 1920, imgH: 2876 },
     remoteText: "当前热点对应照片中蓝色标记位置，点击打开空调遥控界面。"
   }
 ];
@@ -137,11 +137,58 @@ function resetView() {
   applyTransform();
 }
 
+function imgToStage(hotspotData) {
+  const stageW = stage.clientWidth;
+  const stageH = stage.clientHeight;
+  if (!stageW || !stageH) return { x: hotspotData.x, y: hotspotData.y };
+
+  const imgW = hotspotData.imgW || 1920;
+  const imgH = hotspotData.imgH || 2876;
+  const stageRatio = stageW / stageH;
+  const imgRatio = imgW / imgH;
+
+  let imgScale, renderedW, renderedH, offsetX, offsetY;
+
+  if (imgRatio > stageRatio) {
+    imgScale = stageH / imgH;
+    renderedW = imgW * imgScale;
+    renderedH = stageH;
+    offsetX = (stageW - renderedW) / 2;
+    offsetY = 0;
+  } else {
+    imgScale = stageW / imgW;
+    renderedW = stageW;
+    renderedH = imgH * imgScale;
+    offsetX = 0;
+    offsetY = (stageH - renderedH) / 2;
+  }
+
+  const imgPX = hotspotData.x / 100 * imgW;
+  const imgPY = hotspotData.y / 100 * imgH;
+  const stagePX = offsetX + imgPX * imgScale;
+  const stagePY = offsetY + imgPY * imgScale;
+
+  return {
+    x: Math.round(stagePX / stageW * 10000) / 100,
+    y: Math.round(stagePY / stageH * 10000) / 100
+  };
+}
+
+function updateHotspotPos() {
+  const current = scenes[sceneIndex];
+  if (!current.hotspot) return;
+  const pos = imgToStage(current.hotspot);
+  hotspot.style.setProperty("--hotspot-x", `${pos.x}%`);
+  hotspot.style.setProperty("--hotspot-y", `${pos.y}%`);
+}
+
 function focusHotspot() {
   const current = scenes[sceneIndex];
+  if (!current.hotspot) return;
+  const pos = imgToStage(current.hotspot);
   const limits = panLimits();
-  panX = clamp((50 - current.hotspot.x) * window.innerWidth * 0.012, -limits.x, limits.x);
-  panY = clamp((50 - current.hotspot.y) * window.innerHeight * 0.012, -limits.y, limits.y);
+  panX = clamp((50 - pos.x) * window.innerWidth * 0.012, -limits.x, limits.x);
+  panY = clamp((50 - pos.y) * window.innerHeight * 0.012, -limits.y, limits.y);
   scale = Math.max(scale, 1.08);
   applyTransform();
 }
@@ -157,15 +204,15 @@ function loadScene(index) {
   full.src = current.image;
   full.onload = () => {
     image.src = full.src;
+    updateHotspotPos();
   };
 
   image.alt = current.title;
   sceneTitle.textContent = current.title;
   if (current.hotspot) {
     hotspot.style.display = "";
-    hotspot.style.setProperty("--hotspot-x", `${current.hotspot.x}%`);
-    hotspot.style.setProperty("--hotspot-y", `${current.hotspot.y}%`);
     mapHotspot.style.display = "";
+    updateHotspotPos();
   } else {
     hotspot.style.display = "none";
     mapHotspot.style.display = "none";
@@ -313,6 +360,8 @@ window.addEventListener("keydown", (event) => {
   if (event.key === "ArrowLeft") loadScene(sceneIndex - 1);
   if (event.key === "ArrowRight") loadScene(sceneIndex + 1);
 });
+
+window.addEventListener("resize", updateHotspotPos);
 
 loadScene(0);
 updateRemoteStatus();
